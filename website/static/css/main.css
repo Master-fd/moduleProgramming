@@ -1,0 +1,38 @@
+
+
+.head{
+
+}
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.head .wrap{
+
+}
+
+.wrap .tap{
+    color: red;
+    cursor: pointer;
+}
+.wrap .tapActive{
+    color: blue;
+    cursor: pointer;
+}
+.img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+.img:hover{
+    transform: scale(1.5, 1.5);
+    -webkit-transform: scale(1.5, 1.5);
+    -moz-transform: scale(1.5, 1.5);
+}
+.full{
+    width: 100%;
+    height: 100%;
+}
+

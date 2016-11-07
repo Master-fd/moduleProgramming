@@ -1,0 +1,29 @@
+{
+  "name": "seatools",
+  "version": "0.5.12",
+  "author": "popomore <a@chuo.me>",
+  "description": "Provide build, test and other tools for Sea.js developers.",
+  "homepage": "https://github.com/seajs/seatools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seajs/seatools.git"
+  },
+  "dependencies": {
+    "commander": "~1.1.1",
+    "totoro": "~0.5.3",
+    "node-static": "~0.6.9",
+    "shelljs": "~0.2.1",
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-connect": "~0.3.0",
+    "connect-livereload": " ~0.2.0",
+    "spm-build": "~0.3.9"
+  },
+  "bin": {
+    "seatools": "bin/seatools"
+  }
+}

@@ -1,0 +1,77 @@
+#!/usr/bin/env node
+
+var commander = require('commander');
+var grunt = require('../lib/grunt');
+
+commander
+  .version(require('../package.json').version)
+  .option('-v, --verbose', 'Show more information.');
+
+commander
+  .command('build')
+  .description('Build sea.js')
+  .action(function(){
+    grunt.invoke('build');
+  });
+
+commander
+  .command('size')
+  .description('Get sea.js file size')
+  .action(function(){
+    grunt.invoke('size');
+  });
+
+commander
+  .command('publish')
+  .description('Publish to gh-pages')
+  .action(function(){
+    grunt.invoke('publish');
+  });
+
+commander
+  .command('site')
+  .description('Generate site and debug')
+  .option('-w, --watch', 'Start a watch server')
+  .action(function(){
+    var sub = this.args[0];
+    if (sub.watch) {
+      grunt.invoke('site-watch');
+    } else {
+      grunt.invoke('site');
+    }
+  });
+
+commander
+  .command('test')
+  .description('Test seajs')
+  .option('--local', 'Test seajs using phantom')
+  .option('--http', 'Test seajs using phantom with server')
+  .option('--totoro', 'Test seajs using totoro')
+  .action(function(){
+    var sub = this.args[0];
+    if (sub.totoro) {
+      grunt.invoke('test-totoro');
+    } else if(sub.local) {
+      grunt.invoke('test-local');
+    } else if(sub.http) {
+      grunt.invoke('test-http');
+    } else {
+      grunt.invoke('test');
+    }
+  });
+
+process.on('uncaughtException', function(err) {
+  console.log(err);
+});
+
+commander.parse(process.argv);
+
+var isExist = !commander.commands.every(function(item) {
+  return item !== commander.args[0];
+});
+
+if (!isExist) {
+  process.stdout.write(commander.helpInformation());
+  commander.emit('--help');
+  process.exit();
+}
